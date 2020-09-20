@@ -3,16 +3,38 @@
         <h1>Hello world</h1>
         <h2>Hello world</h2>
         <h1 id="result"></h1>
+        <input type="number" id="step" value="0">
         <button onclick="countUp()">Count Up!!!</button>
+        <button onclick="countDown()">COUTDOWN </button>
+        <button type="reset" id = "reset" value="Reset">Reset</button>
+        
     
     </body>
     <script>
-        let x = 5;
+        let x = 5-5+5-5-0*2-5-5-5-5-5+30;
+        
+
         document.getElementById("result").innerHTML = x;
         function countUp() { 
             console.log ("1 2 3 4 5 I here Too")
-            x = x + 1
+            value = document.getElementById("step").value;
+            console.log("value",value);
+            x = x + parseInt(value);
             document.getElementById("result").innerHTML = x;
+            
+        }
+        function countDown() { 
+            console.log ("LOL")
+            x = x - 1;
+            if(x >= 0){
+            document.getElementById("result").innerHTML = x;
+            }else if (x < 0 ){
+                document.getElementById("result").innerHTML = "ERROR I FLYYY";
+                x = 0;
+            }
+        document.getElementById("reset").innerHTML = 0;
+            value = value - parseInt(value);
+
         } 
     
     
