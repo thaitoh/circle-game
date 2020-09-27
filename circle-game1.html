@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title> Circle-game1 !!!! </title>
+    </head>
+    <body onkeydown="KeyDown(event)">
+        <canvas id="paper" width="400" height="400"style="border: 1px solid #000000;">    </canvas>
+        <button onclick="shrink()">LOW</button>
+    </body>
+
+    <script type="text/javascript">
+        
+        var canvas = document.getElementById("paper");
+        var game = {max_size: 200,center_x:200, center_y: 200, size: 5, step: 5, is_end: false};
+
+
+        let KeyDown = (event) => {
+            if(event.keyCode == 32){
+                shrink();
+            }
+        }
+        
+        let grow = () => {
+            if(game.size >= game.max_size){
+                endgame();
+            }else{
+            game.size = game.size + game.step;
+            }
+        }
+
+        let shrink = () => {
+            if(game.is_end == false && game.size > 0){
+                let _size = game.size - (game.step * 2);
+                if(_size >= 0){
+                    game.size = _size;
+                }else{
+                    geme.size = 5;
+                }
+                
+            }
+
+        }
+
+        let draw = () => {
+            var ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.arc(game.center_x, game.center_y, game.size, 0, 2* Math.PI);
+            ctx.fillStyle = "red";
+            ctx.fill();
+        }
+
+        let endgame = () =>{
+            game.is_end = true;
+            clearInterval(interval);
+        }
+        let time = 0;
+        let interval = setInterval(() => {
+            grow();
+            window.requestAnimationFrame(draw);
+            
+        },50 )
+
+        
+    
+    </script>
+</html>
