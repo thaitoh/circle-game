@@ -1,0 +1,33 @@
+<html>
+    <body id = "paper" width = "400" height = "400"></body>
+    <script>
+        value = 10
+        setInterval(() => {
+            this.count()
+        }, 1000);
+        count();{
+            this.value--;
+                if(this.value >=0){
+                    window.requestAnimationFrame(this.draw)
+                }else{
+                    clearInterval(this.interval)
+                }
+                console.log("Count Down");
+        }
+                
+            
+        
+        
+        draw = () => {
+                console.log("Draw");
+                let ctx = canvas.getContext('2d');
+                ctx.clearRect(0,0 ,canvas.width, canvas.height)
+                ctx.font = "80px Grorgia"
+                ctx.fillStyle = 'red'
+                if(this.value == 0)
+                    ctx.fillText("Start", 250 , 250)
+                else 
+                    ctx.fillText(""+ this.value, 250, 250)
+        }
+    </script>
+</html>
